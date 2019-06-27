@@ -15,4 +15,4 @@ RUN apt-get update \
 
 ENTRYPOINT ["/bin/bash"]
 
-# CMD 
+# CMD ["mvn","-v"] 
