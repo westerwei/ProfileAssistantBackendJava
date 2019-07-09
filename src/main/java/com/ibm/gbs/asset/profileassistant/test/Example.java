@@ -33,7 +33,7 @@ public class Example {
 
     @LogExecution
     @RequestMapping("/test/db/connect")
-    public String home(){
+    public String home() {
         dao.testConnection();
         return "Hello World from Spring Boot Example!!!";
 
@@ -41,12 +41,12 @@ public class Example {
 
     @LogExecution
     @RequestMapping(value = "/test/{dept}/employee", method = GET, produces = "application/json")
-    public List<Employee> getDeptEmployees(@PathVariable String dept){
+    public List<Employee> getDeptEmployees(@PathVariable String dept) {
         return this.dao.getDeptEmployee(dept);
 
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(Example.class, args);
     }
 }

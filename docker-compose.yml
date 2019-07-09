@@ -1,0 +1,17 @@
+version: '3'
+services:
+  pa-DB-mysql:
+    image: "pa-mysql:latest"
+    ports:
+      - "3308:3306"
+    stdin_open: true
+    tty: true
+    container_name: pa-DB-mysql
+
+  pa-app-web:
+    image: "pa-java:latest"
+    ports:
+      - "8100:8080"
+    container_name: pa-app-web
+    depends_on:
+      - pa-DB-mysql

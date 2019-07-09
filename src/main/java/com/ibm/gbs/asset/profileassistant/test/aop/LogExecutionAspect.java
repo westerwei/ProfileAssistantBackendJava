@@ -14,13 +14,14 @@ public class LogExecutionAspect {
 
     @Around("@annotation(LogExecution)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        this.logger.trace("-- start --");
+        String targetName = joinPoint.getTarget().getClass().getCanonicalName();
+        this.logger.trace("-- start (" + targetName +") --");
         long start = System.currentTimeMillis();
 
         Object proceed = joinPoint.proceed();
 
         long executionTime = System.currentTimeMillis() - start;
-        this.logger.trace("-- end (executed in " + executionTime + "ms) --");
+        this.logger.trace("-- end (" + targetName + " executed in " + executionTime + "ms) --");
         return proceed;
     }
 
